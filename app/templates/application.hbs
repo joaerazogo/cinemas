@@ -1,1 +1,35 @@
+<nav class="navigation">
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li>
+        {{#Link-to 'index'}}
+          <a href="#" class="brand-logo"><img src="../logo.jpg" alt=""></a>
+        {{/Link-to}}
+      </li>
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        {{#Link-to 'client.registerclient'}}
+          Register client
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'client.readclient'}}
+          Read client
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'client.editclient'}}
+          Edit client
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'client.deleteclient'}}
+          Delete client
+        {{/Link-to}}
+      </li>
+    </ul>
+  </div>
+</nav>
+
 {{outlet}}

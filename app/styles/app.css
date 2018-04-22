@@ -7,13 +7,9 @@ nav{
   background-color: black;
   border-radius: 10px 0px 10px 0px;
 }
-
-.page-footer{
-  background-color: black;
-}
 .navigation{
   height: 70px;
 }
 img{
-  width: 70px; height: 70px;
+  width: 100px; height: 60px;
 }

@@ -1,22 +1,28 @@
-{{#each model as |insert|}}
-  <div class="">
-    {{insert.name}}
+<form class="" action="" method="post">
+  <div class="center">
+    <h1>Please, select the email from client to searching</h1>
   </div>
-  <div class="">
-    {{insert.lastName}}
+  <div class="input-field col s6">
+    <select class="browser-default">
+          {{#each model as |client|}}
+            <option value="">
+                {{client.email}}
+            </option>
+          {{/each}}
+    </select>
   </div>
-  <div class="">
-    {{insert.address}}
-  </div>
-  <div class="">
-    {{insert.telephone}}
-  </div>
-  <div class="">
-    {{insert.email}}
-  </div>
-  <div class="">
-    {{insert.password}}
-  </div>
-{{/each}}
+
+  {{#Link-to 'index'}}
+    <button class="btn waves-effect waves-light" type="submit" name="action">Back
+      <i class="material-icons right">arrow_back</i>
+    </button>
+  {{/Link-to}}
+  {{#Link-to 'readclients' client.email}}
+    <button class="btn waves-effect waves-light" type="submit" name="action">Read
+      <i class="material-icons right">arrow_forward</i>
+    </button>
+  {{/Link-to}}
+</form>
+
 
 {{outlet}}

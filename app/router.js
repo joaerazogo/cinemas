@@ -9,7 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('signup', function() {});
   this.route('signin', function() {});
-  this.route('readclient');
+  this.route('readclient', function() {});
   this.route('editclient');
   this.route('deleteclient');
   this.route('registerclient');
@@ -18,6 +18,16 @@ Router.map(function() {
     this.route('registerclient', function() {});
     this.route('deleteclient', function() {});
     this.route('editclient', function() {});
+    this.route('readclient', function() {
+      this.route('readclients', {path: '/:email'});
+    });
+  });
+
+  this.route('cliente', function() {
+    this.route('readclient', function() {});
+  });
+
+  this.route('clien', function() {
     this.route('readclient', function() {});
   });
 });
