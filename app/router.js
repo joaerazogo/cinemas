@@ -15,9 +15,16 @@ Router.map(function() {
   this.route('registerclient');
 
   this.route('client', function() {
-    this.route('registerclient', function() {});
-    this.route('deleteclient', function() {});
-    this.route('editclient', function() {});
+    this.route('registerclient', function() {
+      this.route('clientregistered');
+    });
+    this.route('deleteclient', function() {
+      this.route('clientdeleted');
+    });
+    this.route('editclient', function() {
+      this.route('clienteedited', {path: '/:email'});
+      this.route('messageclient');
+    });
     this.route('readclient', function() {
       this.route('readclients', {path: '/:email'});
     });

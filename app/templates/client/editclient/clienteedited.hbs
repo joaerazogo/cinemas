@@ -1,5 +1,5 @@
 <div class="center">
-    <h1>Bienvenido, por favor ingrese la información del cliente</h1>
+  <h1>Actualice los datos del cliente</h1>
 </div>
 <div class="">
   <div class="row">
@@ -40,21 +40,15 @@
          <label for="password">Password</label>
        </div>
      </div>
-     <div class="">
-       {{#if 'model.messageEmailExists'}}
-
-       {{else}}
-
-       {{/if}}
-     </div>
    </form>
  </div>
  <div class="center">
    <div class="row">
-      <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'registerClient'}}>Registrar
+    {{#link-to 'client.editclient.messageclient'}}
+      <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'updateClient'}}>Actualizar cliente
         <i class="material-icons right">send</i>
       </button>
-
+     {{/link-to}}
     {{#link-to 'index'}}
       <button class="btn waves-effect waves-light" type="submit" name="action">Cancelar
         <i class="material-icons right">arrow_back</i>
@@ -63,5 +57,4 @@
    </div>
  </div>
 </div>
-
 {{outlet}}

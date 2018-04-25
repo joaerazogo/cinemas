@@ -1,14 +1,14 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-  model({email}){
-    const clients = this.modelFor('client');
-    const client = clients.findBy('email', email);
-    if (!client) {
+  model(email){
+    const emailClient = email['email'];
+    console.log(Object.values(email));
+    if (!emailClient) {
         this.transitionTo('index');
 
     } else {
-      return client;
+      return emailClient;
     }
   }
 });
