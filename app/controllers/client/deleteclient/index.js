@@ -3,9 +3,11 @@ import Controller from '@ember/controller';
 export default Controller.extend({
   actions:{
     deleteClient(client){
-      const promises =  client.get('email').map(email => chapter.destroyRecord());
-      promises.pushObjects()
-      all(promises).then(() => book.destroyRecord());
+        store.findRecord('client', 1, { backgroundReload: false }).then(function(client) {
+        post.deleteRecord();
+        post.get('isDeleted'); // => true
+        post.save(); // => DELETE to /posts/1
+      });
     }
   }
 });
