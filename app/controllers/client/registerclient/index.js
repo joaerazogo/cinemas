@@ -4,10 +4,21 @@ import {computed, set, get} from '@ember/object';
 export default Controller.extend({
   actions: {
       registerClient: function() {
+        //Leee los datos del nombre, apellido, dirección, teléfono, email, contraseña y el cliente
         let email = this.getProperties('email').email;
         let name = this.getProperties('name').name;
-        console.log(email);
-        console.log(name);
+        let last_name = this.getProperties('last_name').last_name;
+        let address = this.getProperties('address').address;
+        let telephone = this.getProperties('telephone').telephone;
+        let password = this.getProperties('password').password;
+
+        //Expresión regular donde nos ayuda a determinar si el correo tiene un formato correcto
+        var expreg = new RegExp("@");
+
+
+        //console.log(email);
+        //console.log(name);
+        //mapea todos los emails que están registrados en la base de datos
         const emails = this.get('model.clients').mapBy('email');
         var valueregistered;
 
@@ -21,23 +32,29 @@ export default Controller.extend({
           }
         }
         //console.log(valueregistered);
-
-        if (valueregistered) {
-          var register = this.store.createRecord('client', {
-            name: this.get('name'),
-            lastName: this.get('last_name'),
-            address: this.get('address'),
-            telephone: this.get('telephone'),
-            email: this.get('email'),
-            password: this.get('password'),
-          });
-          register.save();
-          this.transitionToRoute('client.registerclient.clientregistered');
-        }else{
-          alert(this.get('model.messageEmailExists'));
+        //si cumple la condición entonces registra el cliente en caso contrario lo redicrecciona a la misma vista hasta que ingrese correctamente los datos
+        if (!(email==null && name==null && last_name==null && address==null && telephone==null && password==null)) {
+          if (valueregistered && expreg.test(email)) {
+            var register = this.store.createRecord('client', {
+              name: this.get('name'),
+              lastName: this.get('last_name'),
+              address: this.get('address'),
+              telephone: this.get('telephone'),
+              email: this.get('email'),
+              password: this.get('password'),
+            });
+            register.save();
+            this.transitionToRoute('client.registerclient.clientregistered');
+          }else{
+            set(this.get('model'), 'messageEmailExists', false);
+            this.transitionToRoute('client.registerclient.index');
+          }
+        }else {
+          console.log('Valores nulos');
           set(this.get('model.messageEmailExists'), 'messageEmailExists', false);
           this.transitionToRoute('client.registerclient.index');
         }
+
     }
   }
 });
