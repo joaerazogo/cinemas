@@ -3,24 +3,23 @@ import {computed, set, get} from '@ember/object';
 
 export default Controller.extend({
   actions:{
-    updateClient(emailClient){
-        console.log(emailClient);
-        let name = this.getProperties('name').name;
-        let lastName = this.getProperties('last_name').lastName;
-        let address = this.getProperties('address').address;
-        let telephone = this.getProperties('telephone').telephone;
-        let email = this.getProperties('email').email;
-        let password = this.getProperties('password').password
+    updateClient:function(email){
+        let name = this.get('name');
+        let lastName = this.get('last_name');
+        let address = this.get('address');
+        let telephone = this.get('telephone');
+        let Email = this.get('email');
+        let password = this.get('password');
 
-        this.get('store').findRecord('client', email).then(function(client) {
-        // ...after the record has loaded
+        let client = this.get('model.clients').findBy('email', email);
+
         client.set('name', name);
         client.set('lastName', lastName);
         client.set('address', address);
         client.set('telephone', telephone);
-        client.set('email', email);
+        client.set('email', Email);
         client.set('password', password);
-      });
+        client.save()
     }
   }
 });

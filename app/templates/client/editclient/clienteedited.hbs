@@ -45,11 +45,10 @@
      </div>
    </form>
  </div>
- <h1>{{model.email}}</h1>
  <div class="center">
    <div class="row">
     {{#link-to 'client.editclient.messageclient'}}
-      <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'updateClient' model.email}}>Actualizar cliente
+      <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'updateClient' model.emailClient}}>Actualizar cliente
         <i class="material-icons right">send</i>
       </button>
      {{/link-to}}
