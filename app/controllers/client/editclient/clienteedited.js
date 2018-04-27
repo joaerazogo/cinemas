@@ -1,8 +1,10 @@
 import Controller from '@ember/controller';
+import {computed, set, get} from '@ember/object';
 
 export default Controller.extend({
   actions:{
-    updateClient:function(){
+    updateClient(emailClient){
+        console.log(emailClient);
         let name = this.getProperties('name').name;
         let lastName = this.getProperties('last_name').lastName;
         let address = this.getProperties('address').address;
@@ -10,7 +12,7 @@ export default Controller.extend({
         let email = this.getProperties('email').email;
         let password = this.getProperties('password').password
 
-        this.get('store').findRecord('client', 1).then(function(client) {
+        this.get('store').findRecord('client', email).then(function(client) {
         // ...after the record has loaded
         client.set('name', name);
         client.set('lastName', lastName);

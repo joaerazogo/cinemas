@@ -1,13 +1,12 @@
 import Controller from '@ember/controller';
+import {computed, set, get} from '@ember/object';
 
 export default Controller.extend({
   actions:{
-    deleteClient(client){
-        store.findRecord('client', 1, { backgroundReload: false }).then(function(client) {
-        post.deleteRecord();
-        post.get('isDeleted'); // => true
-        post.save(); // => DELETE to /posts/1
-      });
-    }
+    onChangeEmail:function(email){
+        console.log(email);
+        this.set('selectedEmail', email);
+        console.log(this.get('selectedEmail'));
+      }
   }
 });

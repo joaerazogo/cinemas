@@ -1,14 +1,17 @@
 import Route from '@ember/routing/route';
+import {computed, set, get} from '@ember/object';
 
 export default Route.extend({
-  model(email){
-    const emailClient = email['email'];
-    console.log(Object.values(email));
-    if (!emailClient) {
-        this.transitionTo('index');
 
-    } else {
-      return emailClient;
-    }
+  model({ email }){
+    console.log(email);
+    return this.store.query('client', {
+      orderBy: 'email',
+      equalTo: email,
+      limitToFirst: 1,
+    }).then((clients) => {
+      return clients.get('firstObject');
+    });
+
   }
 });

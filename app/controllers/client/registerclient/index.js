@@ -1,15 +1,17 @@
 import Controller from '@ember/controller';
+import {computed, set, get} from '@ember/object';
 
 export default Controller.extend({
   actions: {
       registerClient: function() {
         let email = this.getProperties('email').email;
+        let name = this.getProperties('name').name;
         console.log(email);
-        const emails = this.get('model').mapBy('email');
+        console.log(name);
+        const emails = this.get('model.clients').mapBy('email');
         var valueregistered;
 
         for (var i = 0; i < emails.length; i++) {
-
           if (emails[i] == email) {
             valueregistered = false;
             break;
@@ -31,8 +33,9 @@ export default Controller.extend({
           });
           register.save();
           this.transitionToRoute('client.registerclient.clientregistered');
-        }else if (valueregistered) {
-          return messageEmailExists = false;
+        }else{
+          alert(this.get('model.messageEmailExists'));
+          set(this.get('model.messageEmailExists'), 'messageEmailExists', false);
           this.transitionToRoute('client.registerclient.index');
         }
     }

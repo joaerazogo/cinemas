@@ -1,12 +1,12 @@
 import Controller from '@ember/controller';
+import {computed, set, get} from '@ember/object';
 
 export default Controller.extend({
   actions: {
-    editClient(client) {
-      let cliente = this.getProperties('cliente');
-      alert(client);
-      this.set('selectedClient', client);
-      this.get('selectedClient');
-    }
+    editClient:function(email){
+        console.log(email);
+        this.set('selectedEmail', email);
+        console.log(this.get('selectedEmail'));
+      }
   }
 });
