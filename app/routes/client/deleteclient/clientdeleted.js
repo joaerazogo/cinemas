@@ -4,12 +4,14 @@ import {computed, set, get} from '@ember/object';
 export default Route.extend({
   model({ email }){
     console.log(email);
-    return this.store.query('client', {
+
+    console.log(this.store.findAll('client'));
+    var clientEmail = this.store.query('client', {
       orderBy: 'email',
       equalTo: email,
       limitToFirst: 1,
     }).then((clients) => {
-        return clients.removeObject('firstObject');
+        return clients.get('firstObject');
     });
   }
 });
