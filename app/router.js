@@ -19,7 +19,7 @@ Router.map(function() {
       this.route('clientregistered');
     });
     this.route('deleteclient', function() {
-      this.route('clientdeleted', {path: '/:email'});
+      this.route('clientdeleted');
     });
     this.route('editclient', function() {
       this.route('clienteedited', {path: '/:email'});

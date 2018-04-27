@@ -20,8 +20,8 @@
           <i class="material-icons right">arrow_back</i>
         </button>
       {{/link-to}}
-      {{#link-to 'client.deleteclient.clientdeleted' selectedEmail}}
-        <button class="btn waves-effect waves-light" type="submit" name="action">Borrar
+      {{#link-to 'client.deleteclient.clientdeleted'}}
+        <button class="btn waves-effect waves-light" type="submit" name="action" {{action "deleteEmail" selectedEmail}}>Borrar
           <i class="material-icons right">arrow_forward</i>
         </button>
       {{/link-to}}
