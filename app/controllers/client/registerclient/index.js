@@ -25,7 +25,7 @@ export default Controller.extend({
         if (valueregistered) {
           var register = this.store.createRecord('client', {
             name: this.get('name'),
-            lastName: this.get('lastName'),
+            lastName: this.get('last_name'),
             address: this.get('address'),
             telephone: this.get('telephone'),
             email: this.get('email'),
