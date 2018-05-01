@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import {computed, set, get} from '@ember/object';
 
 export default Controller.extend({
+  //Acción donde almacena en el atributo selectedEmail el email seleccionado
   actions: {
     editClient:function(email){
         //console.log(email);

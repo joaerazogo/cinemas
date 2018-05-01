@@ -5,7 +5,6 @@ export default Controller.extend({
   actions:{
     updateClient:function(email){
         //lee los campos ingresados por el empleado
-        console.log(email + ' ------------------------- ');
         let name = this.get('name');
         let lastName = this.get('last_name');
         let address = this.get('address');
