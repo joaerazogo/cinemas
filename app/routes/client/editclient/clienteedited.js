@@ -6,9 +6,13 @@ export default Route.extend({
     console.log(email);
     const clients = this.store.findAll('client');
     const emailClient = email;
+    const messageEmailExists = true;
+    const fieldEmpty = true;
     return{
       clients,
       emailClient,
+      messageEmailExists,
+      fieldEmpty,
     };
   }
 });

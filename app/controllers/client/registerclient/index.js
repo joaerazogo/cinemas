@@ -3,7 +3,19 @@ import {computed, set, get} from '@ember/object';
 
 export default Controller.extend({
   actions: {
-      registerClient: function() {
+      registerClient: function(){
+        /*
+        var model = this.get('model.clients');
+        alert(model);
+        model.validate().then(()=>{
+        model.save().then(()=>{
+          this.transitionToRoute('client.registerclient.clientregistered', model)
+        });
+          }).catch(()=>{
+            console.log(model.get("errors"));
+          })
+        */
+
         //Leee los datos del nombre, apellido, dirección, teléfono, email, contraseña y el cliente
         let email = this.getProperties('email').email;
         let name = this.getProperties('name').name;
@@ -34,27 +46,32 @@ export default Controller.extend({
         //console.log(valueregistered);
         //si cumple la condición entonces registra el cliente en caso contrario lo redicrecciona a la misma vista hasta que ingrese correctamente los datos
         if (!(email==null && name==null && last_name==null && address==null && telephone==null && password==null)) {
-          if (valueregistered && expreg.test(email)) {
-            var register = this.store.createRecord('client', {
-              name: this.get('name'),
-              lastName: this.get('last_name'),
-              address: this.get('address'),
-              telephone: this.get('telephone'),
-              email: this.get('email'),
-              password: this.get('password'),
-            });
-            register.save();
-            this.transitionToRoute('client.registerclient.clientregistered');
+          if (expreg.test(email)) {
+            if (valueregistered) {
+              var register = this.store.createRecord('client', {
+                name: this.get('name'),
+                lastName: this.get('last_name'),
+                address: this.get('address'),
+                telephone: this.get('telephone'),
+                email: this.get('email'),
+                password: this.get('password'),
+              });
+              register.save();
+              this.transitionToRoute('client.registerclient.clientregistered');
+              //this.get('target.router').refresh();
+            }else{
+              set(this.get('model'), 'messageEmailExists', false);
+              this.transitionToRoute('client.registerclient.index');
+            }
           }else{
+            console.log('Email incorrecto');
             set(this.get('model'), 'messageEmailExists', false);
+            this.transitionToRoute('client.registerclient.index', this.get('model.messageEmailExists'));
+          }
+          }else {
+            console.log('Valores nulos');
             this.transitionToRoute('client.registerclient.index');
           }
-        }else {
-          console.log('Valores nulos');
-          set(this.get('model.messageEmailExists'), 'messageEmailExists', false);
-          this.transitionToRoute('client.registerclient.index');
-        }
-
     }
   }
 });

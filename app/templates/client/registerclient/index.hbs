@@ -33,10 +33,14 @@
      </div>
      <div class="row">
        <div class="input-field col s6">
-         {{input id=email value=email type="text" placeholder="email" required="true"}}
+         {{input id=email value=email type="email" placeholder="email" required="true"}}
          <label for="email">Email</label>
        </div>
      </div>
+     {{#if model.messageEmailExists}}
+     {{else}}
+     Email con formato incorrecto, este email no incluye @, por favor ingrese el formato correctamente
+     {{/if}}
      <div class="row">
        <div class="input-field col s6">
          {{input id=password value=password type="password" placeholder="password" required="true"}}

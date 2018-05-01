@@ -6,6 +6,10 @@
 </div>
 <div class="">
   <div class="row">
+    {{#if model.fieldEmpty}}
+    {{else}}
+       algunos o todos los campos están vacíos, por favor, llenar todos los campos
+    {{/if}}
    <form class="col s12" >
      <div class="row">
        <div class="input-field col s6">
@@ -37,6 +41,10 @@
          <label for="email">Email</label>
        </div>
      </div>
+     {{#if model.messageEmailExists}}
+     {{else}}
+        Email con formato incorrecto, este email no incluye @, por favor ingrese el formato correctamente
+     {{/if}}
      <div class="row">
        <div class="input-field col s6">
          {{input id=password value=password type="password" placeholder="password" required="true"}}
@@ -47,11 +55,9 @@
  </div>
  <div class="center">
    <div class="row">
-    {{#link-to 'client.editclient.messageclient'}}
       <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'updateClient' model.emailClient}}>Actualizar cliente
         <i class="material-icons right">send</i>
       </button>
-     {{/link-to}}
     {{#link-to 'index'}}
       <button class="btn waves-effect waves-light" type="submit" name="action">Cancelar
         <i class="material-icons right">arrow_back</i>

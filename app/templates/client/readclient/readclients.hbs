@@ -1,26 +1,40 @@
 <div class="center">
   <h1><strong><i>DATOS DEL CLIENTE</i></strong></h1>
 </div>
-<table>
-       <thead>
-         <tr>
-             <th>Nombre</th>
-             <th>Apellido</th>
-             <th>Dirección</th>
-             <th>Teléfono</th>
-             <th>Correo</th>
-         </tr>
-       </thead>
+<div class="">
+  <table>
+         <thead>
+           <tr>
+               <th>Nombre</th>
+               <th>Apellido</th>
+               <th>Dirección</th>
+               <th>Teléfono</th>
+               <th>Correo</th>
+           </tr>
+         </thead>
 
-       <tbody>
-         <tr>
-           <td>{{model.name}}</td>
-           <td>{{model.lastName}}</td>
-           <td>{{model.address}}</td>
-           <td>{{model.telephone}}</td>
-           <td>{{model.email}}</td>
-         </tr>
-       </tbody>
-     </table>
+         <tbody>
+           <tr>
+             <td>{{model.name}}</td>
+             <td>{{model.lastName}}</td>
+             <td>{{model.address}}</td>
+             <td>{{model.telephone}}</td>
+             <td>{{model.email}}</td>
+           </tr>
+         </tbody>
+  </table>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="center">
+  {{#link-to 'index'}}
+    <button class="btn waves-effect waves-light" type="submit" name="action" >Atras
+      <i class="material-icons right">arrow_back</i>
+    </button>
+  {{/link-to}}
+</div>
 
 {{outlet}}

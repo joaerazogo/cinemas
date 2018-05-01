@@ -7,8 +7,6 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('signup', function() {});
-  this.route('signin', function() {});
   this.route('readclient', function() {});
   this.route('editclient');
   this.route('deleteclient');
