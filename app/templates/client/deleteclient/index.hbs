@@ -5,14 +5,14 @@
   <div class="center">
     <h1>Bienvenido, por favor seleccione el correo del cliente que desea buscar</h1>
   </div>
-  <div class="input-field col s6">
-    <select class="browser-default" onchange={{action "onChangeEmail" value="target.value"}}>
-      <option value="" disabled selected>Choose your option</option>
-          {{#each model.clients as |client|}}
-            <option value={{client.email}}>{{client.email}}</option>
-          {{/each}}
-    </select>
-  </div>
+    {{#power-select
+      options=model.clients
+      searchField="email"
+      selected=selected
+      onchange=(action "onChangeEmail") as |client|}}
+        {{client.email}}
+    {{/power-select}}
+
   <div class="center">
     <div class="row">
       {{#link-to 'index'}}

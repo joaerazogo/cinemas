@@ -1,0 +1,17 @@
+@import "ember-searchable-select/style";
+@import "ember-power-select";
+/*body{
+  background-image: url("../maxresdefault.jpg");
+  webkit-background-size: cover;
+}*/
+
+nav{
+  background-color: black;
+  border-radius: 10px 0px 10px 0px;
+}
+.navigation{
+  height: 70px;
+}
+img{
+  width: 100px; height: 60px;
+}
