@@ -77,7 +77,7 @@ export default Controller.extend({
             //this.get('target.router').refresh();
           }else{
             console.log('El Email ya existe');
-            set(this.get('model'), 'messageEmailExists', true);
+            //set(this.get('model'), 'messageEmailExists', true);
             set(this.get('model'), 'showErrorMessageClientExists', false);
             this.transitionToRoute('client.registerclient.index');
           }

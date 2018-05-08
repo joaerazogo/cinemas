@@ -15,25 +15,43 @@ export default Controller.extend({
 
     },
     updateClient:function(email){
+
+        var emails = this.get('model.clients').mapBy('email');
         //lee los campos ingresados por el empleado
+        console.log(email);
         let Email = this.get('email');
         let name = this.get('name');
         let last_name = this.get('last_name');
         let address = this.get('address');
         let telephone = this.get('telephone');
         let password = this.get('password');
-        let client = this.get('model');
+        //let client = this.get('model.clients').findBy('email', email);
         //expresión regular para el Email
         var expreg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
         var expregnum = /^([0-9])*$/;
         var expregText = /^[A-Za-z\_\-\.\s\xF1\xD1]+$/;
 
-        //verifica que los campos ingresados por el empleadp no estén vacíos
+        //verifica si el email ingresado está en la base de datos
+        var emailRegistered = true;
+        for (var i = 0; i < emails.length; i++) {
+          if (emails[i] === Email) {
+            emailRegistered = false;
+            break;
+          }else{
+            emailRegistered = true;
+          }
+        }
+        console.log('-----------------------------------------');
+        console.log(email);
+        console.log(Email);
+        console.log('-----------------------------------------');
+        console.log(emailRegistered);
 
           //verifica que se cumpla la expresión regular "@"
         if (!((Email == '' || Email == undefined ) || (name == '' || name == undefined) || (last_name == '' || last_name == undefined) || (address == '' || address == undefined) || (telephone == '' || telephone == undefined) || (password == '' || password == undefined))) {
           if (expreg.test(Email) && expregnum.test(telephone)) {
-            //if (emailRegistered || emails == undefined) {
+            if (emailRegistered || email == Email) {
+              let client = this.get('model.clients').findBy('email', email);
               client.set('name', name);
               client.set('lastName', last_name);
               client.set('address', address);
@@ -49,12 +67,22 @@ export default Controller.extend({
               this.set('password', null);
               this.transitionToRoute('client.editclient.messageclient');
               //this.get('target.router').refresh();
-            //}else{
-              /*console.log('El Email ya existe');
-              set(this.get('model'), 'messageEmailExists', true);
-              set(this.get('model'), 'showErrorMessageClientExists', false);
-              this.transitionToRoute('client.registerclient.index');
-            }*/
+            }else{
+              console.log('El Email ya existe');
+              //this.set('messageEmailExists', false);
+              this.set('showErrorMessageClientExists', true);
+              this.set('messageEmailCorrectFormat', false);
+              this.set('messageTelephoneCorrectFormat', false);
+
+              this.set('fieldPassword', false);
+              this.set('fieldEmail', false);
+              this.set('fieldName', false);
+              this.set('fieldLastname', false);
+              this.set('fieldAddress', false);
+              this.set('fieldPassword', false);
+
+              this.transitionToRoute('client.editclient.clienteedited');
+            }
           }else{
             console.log('Email incorrecto');
             console.log('Telephone incorrecto');
@@ -73,6 +101,7 @@ export default Controller.extend({
             this.transitionToRoute('client.editclient.clienteedited');
           }
           }else {
+            //verifica que los campos ingresados por el empleadp no estén vacíos
             if (Email == '' || Email == undefined ) {
               console.log('email empty');
               //fieldEmail =  false;

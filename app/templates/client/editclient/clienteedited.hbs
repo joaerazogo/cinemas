@@ -4,6 +4,10 @@
 <div class="center">
   <h1>Actualice los datos del cliente</h1>
 </div>
+{{#if showErrorMessageClientExists}}
+    El email que quiere ingresar ya está en la base de datos
+{{else}}
+{{/if}}
 <div class="">
 </div>
 <div class="">
@@ -11,7 +15,7 @@
    <form class="col s12" >
      <div class="row">
        <div class="input-field col s6">
-        <h6><span>Nombre: {{model.name}} </span></h6> {{input id=name value=name type="text" placeholder="enter name" required="true"}}
+        <h6><span>Nombre: {{model.client.name}} </span></h6> {{input id=name value=name type="text" placeholder="enter name" required="true"}}
          <label for="name">Name:</label>
        </div>
      </div>
@@ -21,7 +25,7 @@
      {{/if}}
      <div class="row">
        <div class="input-field col s6">
-         <h6><span>Apellido: {{model.lastName}}</span></h6> {{input id=last_name value=last_name type="text" placeholder="last name" required="true"}}
+         <h6><span>Apellido: {{model.client.lastName}}</span></h6> {{input id=last_name value=last_name type="text" placeholder="last name" required="true"}}
          <label for="name">Last Name:</label>
        </div>
      </div>
@@ -31,7 +35,7 @@
      {{/if}}
      <div class="row">
        <div class="input-field col s6">
-         <h6><span>Dirección: {{model.address}}</span></h6> {{input id=address value=address type="text" placeholder="Address" required="true"}}
+         <h6><span>Dirección: {{model.client.address}}</span></h6> {{input id=address value=address type="text" placeholder="Address" required="true"}}
          <label for="direccion">Address:</label>
        </div>
      </div>
@@ -41,7 +45,7 @@
      {{/if}}
      <div class="row">
        <div class="input-field col s6">
-         <h6><span>Teléfono: {{model.telephone}}</span></h6> {{input id=telephone value=telephone type="text" placeholder="telephone" required="true"}}
+         <h6><span>Teléfono: {{model.client.telephone}}</span></h6> {{input id=telephone value=telephone type="text" placeholder="telephone" required="true"}}
          <label for="name">Telephone:</label>
        </div>
      </div>
@@ -56,7 +60,7 @@
 
      <div class="row">
        <div class="input-field col s6">
-         <h6><span>Correo electrónico: {{model.email}}</span></h6>{{input id=email value=email type="text" placeholder="email" required="true"}}
+         <h6><span>Correo electrónico: {{model.client.email}}</span></h6>{{input id=email value=email type="text" placeholder="email" required="true"}}
          <label for="email">Email</label>
        </div>
      </div>
@@ -71,7 +75,7 @@
 
      <div class="row">
        <div class="input-field col s6">
-         <h6><span>Contraseña: {{model.password}}</span></h6> {{input id=password value=password type="password" placeholder="password" required="true"}}
+         <h6><span>Contraseña: {{model.client.password}}</span></h6> {{input id=password value=password type="password" placeholder="password" required="true"}}
          <label for="password">Password</label>
        </div>
      </div>
@@ -83,7 +87,7 @@
  </div>
  <div class="center">
    <div class="row">
-      <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'updateClient' model.email}}>Actualizar
+      <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'updateClient' model.client.email}}>Actualizar
         <i class="material-icons right">send</i>
       </button>
     {{#link-to 'index'}}
