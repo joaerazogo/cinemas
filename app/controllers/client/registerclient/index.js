@@ -56,6 +56,12 @@ export default Controller.extend({
         //console.log(valueregistered);
         //si cumple la condición entonces registra el cliente en caso contrario lo redicrecciona a la misma vista hasta que ingrese correctamente los datos
       if (!((email == '' || email == undefined ) || (name == '' || name == undefined) || (last_name == '' || last_name == undefined) || (address == '' || address == undefined) || (telephone == '' || telephone == undefined) || (password == '' || password == undefined))) {
+        set(this.get('model'), 'fieldEmail', true);
+        set(this.get('model'),'fieldName', true);
+        set(this.get('model'), 'fieldLastname', true);
+        set(this.get('model'), 'fieldAddress', true);
+        set(this.get('model'), 'fieldTelephone', true);
+        set(this.get('model'),'fieldPassword', true);
         if (expreg.test(email) && expregnum.test(telephone)) {
           if (emailRegistered || emails == undefined) {
             var register = this.store.createRecord('client', {

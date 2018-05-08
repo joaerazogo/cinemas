@@ -49,6 +49,12 @@ export default Controller.extend({
 
           //verifica que se cumpla la expresión regular "@"
         if (!((Email == '' || Email == undefined ) || (name == '' || name == undefined) || (last_name == '' || last_name == undefined) || (address == '' || address == undefined) || (telephone == '' || telephone == undefined) || (password == '' || password == undefined))) {
+          this.set('fieldEmail', false);
+          this.set('fieldName', false);
+          this.set('fieldLastname', false);
+          this.set('fieldAddress', false);
+          this.set('fieldTelephone', false);
+          this.set('fieldPassword', false);
           if (expreg.test(Email) && expregnum.test(telephone)) {
             if (emailRegistered || email == Email) {
               let client = this.get('model.clients').findBy('email', email);

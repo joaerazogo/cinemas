@@ -1,9 +1,13 @@
 <div class="center">
-  <h1><strong><i>LISTA DE CLIENTES EXISTENTES</i></strong></h1>
+  <h1><strong><i>BUSCAR CLIENTE</i></strong></h1>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
 <form class="" action="" method="post">
-  <div class="center">
-    <h1>Bienvenido, por favor seleccione el correo del cliente que desea buscar</h1>
+  <div class="left col s1">
+    <h6>Ingresar correo:</h6>
   </div>
   <div class="center">
     {{#if model.clientsRegistered}}
@@ -23,14 +27,14 @@
   {{/power-select}}
   <div class="center">
     <div class="row">
-      {{#Link-to 'index'}}
-        <button class="btn waves-effect waves-light" type="submit" name="action">Atrás
-          <i class="material-icons right">arrow_back</i>
-        </button>
-      {{/Link-to}}
       {{#Link-to 'client.editclient.clienteedited' selectedClient.email}}
         <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'tryRead'}}>Leer
           <i class="material-icons right">arrow_forward</i>
+        </button>
+      {{/Link-to}}
+      {{#Link-to 'index'}}
+        <button class="btn waves-effect waves-light" type="submit" name="action">Atrás
+          <i class="material-icons right">arrow_back</i>
         </button>
       {{/Link-to}}
       <div class="">
