@@ -1,13 +1,6 @@
 import BaseValidator from 'ember-cp-validations/validators/base';
-import Validator from 'ember-cli-data-validation/validator';
 
 const Client = BaseValidator.extend({
-  validate: function(name, value, attribute, model) {
-        if(this.get('client' && name)) {
-            // this would format the Error message
-            return this.format();
-        }
-    }
 });
 
 Client.reopenClass({

@@ -5,13 +5,20 @@
   <div class="center">
     <h1>Bienvenido, por favor seleccione el correo del cliente que desea buscar</h1>
   </div>
-    {{#power-select
-      options=model.clients
-      searchField="email"
-      selected=selected
-      onchange=(action "onChangeEmail") as |client|}}
-        {{client.email}}
-    {{/power-select}}
+  {{#if model.clientsRegistered}}
+  {{else}}
+    No existen correos actualmente
+  {{/if}}
+  {{#power-select
+    options=model.clients
+    searchField="email"
+    selected=selectedClient
+    allowClear=true
+    noMatchesMessage="No se han encontrado coincidencias con este correo"
+    onchange=(action "onChangeEmail")
+    as |client|}}
+      {{client.email}}
+  {{/power-select}}
 
   <div class="center">
     <div class="row">
@@ -20,11 +27,13 @@
           <i class="material-icons right">arrow_back</i>
         </button>
       {{/link-to}}
-      {{#link-to 'client.deleteclient.clientdeleted'}}
-        <button class="btn waves-effect waves-light" type="submit" name="action" {{action "deleteEmail" selectedEmail}}>Borrar
-          <i class="material-icons right">arrow_forward</i>
-        </button>
-      {{/link-to}}
+      <button class="btn waves-effect waves-light" type="submit" name="action" {{action "deleteEmail" selectedClient.email}}>Borrar
+        <i class="material-icons right">arrow_forward</i>
+      </button>
+
+    </div>
+    <div class="">
+      {{#if model.showErrorMessage}}{{else}}Por favor ingrese un correo{{/if}}
     </div>
   </div>
 </form>

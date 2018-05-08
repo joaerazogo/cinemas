@@ -5,9 +5,13 @@ export default Route.extend({
   model(){
     const clients = this.store.findAll('client');
     const selectedClient = '';
+    const showErrorMessage = true;
+    var clientsRegistered = true;
     return hash({
       clients,
       selectedClient,
+      showErrorMessage,
+      clientsRegistered,
     });
-  }
+  },
 });
