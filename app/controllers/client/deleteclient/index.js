@@ -12,7 +12,6 @@ export default Controller.extend({
       //Acción donde se elimina el registro luego de hacerce la consulta por email
       deleteEmail:function(email){
         //const emails = this.get('model.clients').findBy('email', email);
-        alert(email);
         var emails = this.get('model.clients').mapBy('email');
         if (emails.length == 0) {
           set(this.get('model'), 'clientsRegistered', false);
