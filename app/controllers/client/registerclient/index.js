@@ -13,7 +13,6 @@ export default Controller.extend({
         set(this.get('model'),'fieldPassword', true);
         set(this.get('model'), 'messageTelephoneCorrectFormat', true);
         set(this.get('model'),'messageEmailCorrectFormat', true);
-
       },
       registerClient: function(){
 
@@ -51,8 +50,6 @@ export default Controller.extend({
 
           }
         }
-
-
         //console.log(valueregistered);
         //si cumple la condición entonces registra el cliente en caso contrario lo redicrecciona a la misma vista hasta que ingrese correctamente los datos
       if (!((email == '' || email == undefined ) || (name == '' || name == undefined) || (last_name == '' || last_name == undefined) || (address == '' || address == undefined) || (telephone == '' || telephone == undefined) || (password == '' || password == undefined))) {
@@ -64,13 +61,14 @@ export default Controller.extend({
         set(this.get('model'),'fieldPassword', true);
         if (expreg.test(email) && expregnum.test(telephone)) {
           if (emailRegistered || emails == undefined) {
-            var register = this.store.createRecord('client', {
+            var register = this.store.createRecord('usuario', {
               name: this.get('name'),
               lastName: this.get('last_name'),
               address: this.get('address'),
               telephone: this.get('telephone'),
               email: this.get('email'),
               password: this.get('password'),
+              rol: 0,
             });
             register.save();
             this.set('name', null);

@@ -27,6 +27,7 @@ Router.map(function() {
       this.route('readclients', {path: '/:email'});
     });
   });
+  this.route('login');
 });
 
 export default Router;

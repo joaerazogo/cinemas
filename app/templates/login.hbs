@@ -1,0 +1,55 @@
+<div class="center">
+  <h1><strong><i>WELCOME TO THE CINEMA</i></strong></h1>
+</div>
+<div class="">
+</div>
+<div class="">
+  <div class="row">
+   <form class="col s12" >
+     <div class="row">
+       <div class="input-field col s6">
+         <h6><span>Correo electrónico: </span></h6>{{input id=email value=email type="text" placeholder="email"}}
+         <label for="email">Email</label>
+       </div>
+     </div>
+     {{#if fieldEmail}}
+        El campo correo electrónico no puede ser vacío
+     {{else}}
+     {{/if}}
+     {{#if messageEmailCorrectFormat}}
+        El formato es incorrecto por favor digite de nuevo, debe ser con @ y un dominio
+     {{else}}
+     {{/if}}
+     <div class="row">
+       <div class="input-field col s6">
+         <h6><span>Contraseña: </span></h6> {{input id=password value=password type="password" placeholder="password"}}
+         <label for="password">Password</label>
+       </div>
+     </div>
+     {{#if fieldPassword}}
+        El campo Contraseña no puede ser vacío
+     {{else}}
+     {{/if}}
+   </form>
+ </div>
+ <div class="center">
+   <div class="row">
+      <button class="btn waves-effect waves-light" on="submit" name="action" {{action 'loginUser'}}>Iniciar sesión
+        <i class="material-icons right">send</i>
+      </button>
+    {{#link-to 'index'}}
+      <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'cleanFields'}}>Atrás
+        <i class="material-icons right">arrow_back</i>
+      </button>
+    {{/link-to}}
+   </div>
+ </div>
+ <div class="center">
+   {{#if showErrorMessageClientExists}}
+       El usuario o la contraseña son incorrectos,intente de nuevo
+   {{else}}
+   {{/if}}
+ </div>
+</div>
+
+{{outlet}}

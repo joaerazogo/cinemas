@@ -14,6 +14,7 @@ module.exports = function(environment) {
       storageBucket: "cine-f2b08.appspot.com",
       messagingSenderId: "35071501402"
     },
+    torii: { sessionServiceName: 'session' },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -54,6 +55,10 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
   }
+
+  ENV['ember-simple-auth'] = {
+	   authenticationRoute: '/login',
+  };
 
   return ENV;
 };

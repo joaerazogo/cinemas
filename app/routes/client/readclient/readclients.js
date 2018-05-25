@@ -5,7 +5,7 @@ export default Route.extend({
 
   model({ email }){
     console.log(email);
-    return this.store.query('client', {
+    return this.store.query('usuario', {
       orderBy: 'email',
       equalTo: email,
       limitToFirst: 1,

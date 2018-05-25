@@ -4,8 +4,8 @@ import {hash} from 'rsvp';
 export default Route.extend({
   model({ email }){
       console.log(email);
-      const clients = this.store.findAll('client');
-      var client=this.store.query('client', {
+      const clients = this.store.findAll('usuario');
+      var client=this.store.query('usuario', {
         orderBy: 'email',
         equalTo: email,
         limitToFirst: 1,

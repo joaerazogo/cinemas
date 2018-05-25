@@ -1,3 +1,42 @@
+<nav class="navigation">
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li>
+        {{#Link-to 'index'}}
+          <a href="#" class="brand-logo"><img src="../logo.jpg" alt=""></a>
+        {{/Link-to}}
+      </li>
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        {{#Link-to 'client.registerclient'}}
+          Crear Cliente
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'client.readclient'}}
+          Leer Cliente
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'client.editclient'}}
+          Editar Cliente
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'client.deleteclient'}}
+          Borrar Cliente
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'index'}}
+          logout
+        {{/Link-to}}
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <div class="center">
   <h1><strong><i>CLIENTE ELIMINADO</i></strong></h1>
 </div>

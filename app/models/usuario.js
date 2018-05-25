@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import ValidatorMixin from 'ember-cli-data-validation/mixins/validator';
 
 export default DS.Model.extend({
   name: DS.attr('string', {
@@ -33,7 +32,7 @@ export default DS.Model.extend({
             required: true
         }
   }),
-  rol: DS.attr('string', {
+  rol: DS.attr('number', {
       validation: {
           required: true
       }

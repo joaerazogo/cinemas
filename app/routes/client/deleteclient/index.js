@@ -3,7 +3,7 @@ import {hash} from 'rsvp';
 
 export default Route.extend({
   model(){
-    const clients = this.store.findAll('client');
+    const clients = this.store.findAll('usuario');
     const selectedClient = '';
     const showErrorMessage = true;
     var clientsRegistered = true;

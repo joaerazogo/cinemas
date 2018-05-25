@@ -22,13 +22,30 @@
     </ul>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
-        {{#Link-to 'login'}}
-          Login
+        {{#Link-to 'client.registerclient'}}
+          Crear Cliente
         {{/Link-to}}
       </li>
       <li>
+        {{#Link-to 'client.readclient'}}
+          Leer Cliente
+        {{/Link-to}}
       </li>
-
+      <li>
+        {{#Link-to 'client.editclient'}}
+          Editar Cliente
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'client.deleteclient'}}
+          Borrar Cliente
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'index'}}
+          logout
+        {{/Link-to}}
+      </li>
     </ul>
   </div>
 </nav>
