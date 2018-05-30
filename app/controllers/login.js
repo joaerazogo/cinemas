@@ -54,12 +54,12 @@ export default Controller.extend({
                 this.set('email', null);
                 this.set('password', null);
                 console.log('incio de sesión exitoso');
-                this.set('showErrorMessageClientExists', true);
+                this.set('showErrorMessageClientExists', false);
                 this.transitionToRoute('client.index');
               }else if(rolUser == 0){
                 this.set('email', null);
                 this.set('password', null);
-                this.set('showErrorMessageClientExists', true);
+                this.set('showErrorMessageClientExists', false);
                 this.transitionToRoute('reservation.index');
               }
 

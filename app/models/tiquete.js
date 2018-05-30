@@ -2,8 +2,8 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   numeroTiquete: DS.attr('number'),
+  horario: DS.attr('string'),
   hora: DS.attr('date'),
-  fecha: DS.attr('date'),
   precio: DS.attr('number'),
   estado: DS.attr('string'),
   user: DS.belongsTo('usuario'),

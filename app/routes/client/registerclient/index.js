@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import {hash} from 'rsvp';
 export default Route.extend({
   model(){
-    const clients = this.store.findAll('client');
+    const clients = this.store.findAll('usuario');
     const messageEmailExists = true;
     const showErrorMessageClientExists = true;
     const fieldEmail= true;

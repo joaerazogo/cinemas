@@ -1,8 +1,8 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  nombre: DS.attr('string'),
-  sipnosis: DS.attr('string'),
-  duracion: DS.attr('date'),
+  name: DS.attr('string'),
+  synosis: DS.attr('string'),
+  schedule: DS.attr('string'),
   ticket: DS.hasMany('tiquete'),
 });
