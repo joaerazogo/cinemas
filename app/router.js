@@ -28,6 +28,10 @@ Router.map(function() {
     });
   });
   this.route('login');
+  this.route('reservation', function() {
+    this.route('makereservation');
+    this.route('readticket');
+  });
 });
 
 export default Router;

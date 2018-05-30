@@ -1,0 +1,38 @@
+<nav class="navigation">
+  <div class="right hide-on-med-and-down">
+    <ul>
+      <li>
+        {{#Link-to 'reservation.makereservation'}}
+          Relizar reserva
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'reservation.readticket'}}
+          Consultar reserva
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'index'}}
+          logout
+        {{/Link-to}}
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="center">
+  <h1><strong><i>NOTIFICACIÓN</i></strong></h1>
+</div>
+<div class="center">
+    <h1>Bienvenido, por favor ingrese  uno de nuestros servicio</h1>
+</div>
+<br/>
+<br/>
+<div class="center">
+ {{#link-to 'index'}}
+   <button class="btn waves-effect waves-light" type="submit" name="action">Atrás
+     <i class="material-icons right">arrow_back</i>
+   </button>
+ {{/link-to}}
+ </div>
+
+{{outlet}}

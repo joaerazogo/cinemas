@@ -1,7 +1,9 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { get } from '@ember/object';
 
 export default Controller.extend({
+  firebaseApp: Ember.inject.service(),
   session: Ember.inject.service('session'),
   actions:{
     cleanFields: function(){
@@ -15,7 +17,9 @@ export default Controller.extend({
     loginUser:function(){
 
         let controller = this;
+        var rol = this.get('model.clients').mapBy('rol');
         var emails = this.get('model.clients').mapBy('email');
+        var passwords = this.get('model.clients').mapBy('password');
         //lee los campos ingresados por el usuario
         console.log(emails);
         let Email = this.get('email');
@@ -23,11 +27,12 @@ export default Controller.extend({
         //let client = this.get('model.clients').findBy('email', email);
         //expresión regular para el Email
         var expreg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-
+        var rolUser;
         //verifica si el email ingresado está en la base de datos
         var emailRegistered = true;
         for (var i = 0; i < emails.length; i++) {
-          if (emails[i] === Email) {
+          if (emails[i] === Email && passwords[i] == password) {
+            rolUser = rol[i];
             emailRegistered = true;
             break;
           }else{
@@ -45,10 +50,20 @@ export default Controller.extend({
           //verifica que se cumpla la expresión regular "@"
           if (expreg.test(Email)) {
             if (emailRegistered) {
-              this.get('session').authenticate(Email, password);
-              console.log('incio de sesión exitoso');
-              this.transitionToRoute('client.index');
-              //this.get('target.router').refresh();
+              if (rolUser == 1) {
+                this.set('email', null);
+                this.set('password', null);
+                console.log('incio de sesión exitoso');
+                this.set('showErrorMessageClientExists', true);
+                this.transitionToRoute('client.index');
+              }else if(rolUser == 0){
+                this.set('email', null);
+                this.set('password', null);
+                this.set('showErrorMessageClientExists', true);
+                this.transitionToRoute('reservation.index');
+              }
+
+
             }else{
               //this.set('messageEmailExists', false);
               this.set('showErrorMessageClientExists', true);

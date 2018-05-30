@@ -6,6 +6,7 @@ export default Service.extend({
     console.log(Email);
     console.log(password);
     this.set('currentUser', Email);
+    return true;
   },
 
 });
