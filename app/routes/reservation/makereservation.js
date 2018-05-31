@@ -6,11 +6,13 @@ export default Route.extend({
     const chair = this.store.findAll('silla');
     const cinema = this.store.findAll('sala');
     const schedule = '';
+    const numTicket=0;
     return hash({
       movies,
       chair,
       cinema,
-      schedule
+      schedule,
+      numTicket
     });
   },
 });

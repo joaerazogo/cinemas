@@ -31,6 +31,7 @@ Router.map(function() {
   this.route('reservation', function() {
     this.route('makereservation');
     this.route('readticket');
+    this.route('reservationmade');
   });
 });
 

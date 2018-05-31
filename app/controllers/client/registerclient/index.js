@@ -47,7 +47,6 @@ export default Controller.extend({
             break;
           }else{
             emailRegistered = true;
-
           }
         }
         //console.log(valueregistered);
