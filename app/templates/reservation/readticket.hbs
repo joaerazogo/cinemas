@@ -20,19 +20,52 @@
   </div>
 </nav>
 <div class="center">
-  <h1><strong><i>NOTIFICACIÓN</i></strong></h1>
-</div>
-<div class="center">
-    <h1>Bienvenido, por favor ingrese  uno de nuestros servicio</h1>
+  <h1><strong><i>CONSULTAR RESERVA</i></strong></h1>
 </div>
 <br/>
 <br/>
-<div class="center">
- {{#link-to 'index'}}
-   <button class="btn waves-effect waves-light" type="submit" name="action">Atrás
-     <i class="material-icons right">arrow_back</i>
-   </button>
- {{/link-to}}
- </div>
-
+<br/>
+<br/>
+<form class="" action="" method="post">
+  <div class="center">
+    {{#if numberTicket}}
+        No existen reservas actualmente
+    {{else}}
+    {{/if}}
+  </div>
+  <div class="left col s1">
+    <h6>Consultar reserva:</h6>
+  </div>
+  <div class="col s1">
+    {{#power-select
+      options=model.ticket
+      searchField="date"
+      selected=selectedTicket
+      allowClear=true
+      noMatchesMessage="No se han encontrado coincidencias con esta fecha"
+      onchange=(action "onChangeDate")
+      as |ticket|}}
+        {{ticket.date}}
+    {{/power-select}}
+  </div>
+  <br/>
+  <br/>
+  <div class="center">
+    <div class="row">
+      {{#link-to 'reservation.queryticket' selectedTicket.date}}
+        <button class="btn waves-effect waves-light" type="submit" name="action" {{action 'tryRead'}}>Consultar
+          <i class="material-icons right">arrow_forward</i>
+        </button>
+      {{/link-to}}
+      {{#link-to 'index'}}
+        <button class="btn waves-effect waves-light" type="submit" name="action" >Atrás
+          <i class="material-icons right">arrow_back</i>
+        </button>
+      {{/link-to}}
+      <div class="">
+          {{#if showErrorMessage}}Por favor seleccione una reserva{{else}}{{/if}}
+      </div>
+    </div>
+  </div>
+</form>
 {{outlet}}

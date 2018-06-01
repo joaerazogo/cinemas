@@ -24,48 +24,54 @@ export default Controller.extend({
         //console.log(this.get('selectedEmail'));
     },
     movieReserved: function(idSala, numberChair, nameMovie, schedule){
-      var dateMovie = new Date();
-      let fecha = this.get('fecha');
+
+      let dateMovie = this.get('fecha');
       let reservas = this.get('reservas');
 
-      var chair = this.get('model').chair.mapBy('number');
-      var cinema  = this.get('model').cinema.mapBy('idSala');
-      var idSalaRegistered;
-      var numberChairRegistered;
+      var chair = this.get('model').tiquete.mapBy('numberChairCinema');
+      var cinema  = this.get('model').tiquete.mapBy('idSala');
 
+
+      var numberChairRegistered;
+      var limitNumberChair =80;
+
+      console.log(idSala);
+      console.log(numberChair);
+      numberChairRegistered = true;
+
+      var numTicket = 1;
 
       for (var i = 0; i < chair.length; i++) {
-        if (chair[i] === parseInt(numberChair)) {
+        console.log(chair[i]);
+        console.log(cinema[i]);
+        if (chair[i] === parseInt(numberChair) && cinema[i] === parseInt(idSala)) {
           numberChairRegistered = false;
           break;
         }else{
+          console.log(chair[i]);
+          console.log(cinema[i]);
           numberChairRegistered = true;
+          numTicket = numTicket + chair.length;
         }
       }
-      for (var i = 0; i < cinema.length; i++) {
-        if (cinema[i] === parseInt(idSala)) {
-          idSalaRegistered = false;
-          break;
-        }else{
-          idSalaRegistered = true;
-        }
-      }
-      if (!((fecha == '' || fecha == undefined ) || (reservas == '' || reservas == undefined) || (idSala == '' || idSala == undefined) || (numberChair == '' || numberChair == undefined) || (nameMovie == '' || nameMovie == undefined))) {
-        if (numberChairRegistered && idSalaRegistered) {
+
+      if (!((dateMovie == '' || dateMovie == undefined ) || (reservas == '' || reservas == undefined) || (idSala == '' || idSala == undefined) || (numberChair == '' || numberChair == undefined) || (nameMovie == '' || nameMovie == undefined))) {
+        if (numberChairRegistered) {
           if (parseInt(reservas) > 10 || parseInt(reservas) < 0) {
             this.set('MessageNumberChairReserve', true);
             this.set('fieldReserve', false);
           }else {
-            var numTicket = this.get('model').numTicket;
-            numTicket++;
+
             var register = this.store.createRecord('tiquete', {
               numberTicket: numTicket,
               schedule: schedule,
-              hour: dateMovie,
+              date: dateMovie,
               price: 10000,
               state: "activo",
-              idSala: idSala,
-              numberChairCinema: numberChair,
+              idSala: parseInt(idSala),
+              numberChairCinema: parseInt(numberChair),
+              nameMovie: nameMovie,
+              numberReserve: parseInt(reservas),
             });
             this.set('fielDate', false);
             this.set('fieldReserve', false);

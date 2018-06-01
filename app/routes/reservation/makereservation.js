@@ -5,6 +5,7 @@ export default Route.extend({
     const movies = this.store.findAll('pelicula');
     const chair = this.store.findAll('silla');
     const cinema = this.store.findAll('sala');
+    const tiquete = this.store.findAll('tiquete');
     const schedule = '';
     const numTicket=0;
     return hash({
@@ -12,7 +13,8 @@ export default Route.extend({
       chair,
       cinema,
       schedule,
-      numTicket
+      numTicket,
+      tiquete
     });
   },
 });

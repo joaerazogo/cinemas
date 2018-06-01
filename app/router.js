@@ -32,6 +32,7 @@ Router.map(function() {
     this.route('makereservation');
     this.route('readticket');
     this.route('reservationmade');
+    this.route('queryticket', {path: '/:date'});
   });
 });
 

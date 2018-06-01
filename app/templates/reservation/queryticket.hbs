@@ -1,0 +1,62 @@
+<nav class="navigation">
+  <div class="right hide-on-med-and-down">
+    <ul>
+      <li>
+        {{#Link-to 'reservation.makereservation'}}
+          Relizar reserva
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'reservation.readticket'}}
+          Consultar reserva
+        {{/Link-to}}
+      </li>
+      <li>
+        {{#Link-to 'index'}}
+          logout
+        {{/Link-to}}
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="center">
+  <h1><strong><i>DATOS DEL CLIENTE</i></strong></h1>
+</div>
+<div class="">
+  <table>
+         <thead>
+           <tr>
+               <th>Fecha</th>
+               <th>Película</th>
+               <th>Horario</th>
+               <th>Reservas a hacer</th>
+               <th>Sala</th>
+
+           </tr>
+         </thead>
+
+         <tbody>
+           <tr>
+             <td>{{model.date}}</td>
+             <td>{{model.nameMovie}}</td>
+             <td>{{model.schedule}}</td>
+             <td>{{model.numberReserve}}</td>
+             <td>{{model.idSala}}</td>
+           </tr>
+         </tbody>
+  </table>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="center">
+  {{#link-to 'reservation.index'}}
+    <button class="btn waves-effect waves-light" type="submit" name="action" >Atrás
+      <i class="material-icons right">arrow_back</i>
+    </button>
+  {{/link-to}}
+</div>
+
+{{outlet}}
