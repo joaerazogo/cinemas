@@ -25,7 +25,7 @@ export default Controller.extend({
     },
     movieReserved: function(idSala, numberChair, nameMovie, schedule){
 
-      let dateMovie = this.get('fecha');
+      let dateMovie = this.get('date');
       let reservas = this.get('reservas');
 
       var chair = this.get('model').tiquete.mapBy('numberChairCinema');
@@ -98,7 +98,7 @@ export default Controller.extend({
           }
         }
       }else {
-        if (fecha == '' || fecha == undefined ) {
+        if (dateMovie == '' || dateMovie == undefined ) {
           console.log('date empty');
           this.set('fielDate', true);
         }else{
